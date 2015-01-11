@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Terrapin Hackers">
+	<meta name="author" content="Terrapin Hackers">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans|Oswald' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic.css"/>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/unsemantic-grid-responsive.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+	<script src="assets/js/Chart.js"></script>
+	<title>Finance Analyzer</title>
+
+</head>
+<body>
+<div class="grid-container">
+	<div class="grid-100 body-text-title"><br>
+		Finance Analyzer
+		<br><br><br>
+	</div>
+
+	<div class="grid-100 body-text-bold">
+		Managing Expenses
+	</div>
+	<div class="grid-50 body-text">
+		<br>
+		How you spend your money:
+		<br><br>
+		%(percentage_listing)s
+	</div>
+	<div class="grid-50 body-text">
+		<canvas id="myChart" width="400" height="400"></canvas>
+		<script>
+
+			var data = [
+				%(chart_data)s
+			]
+
+			Chart.defaults.global.responsive = true;
+
+			// Get the context of the canvas element we want to select
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var myNewChart = new Chart(ctx).Doughnut(data);
+			var ctx = $("#myChart").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+
+
+
+		</script>
+	</div>
+
+
+	<div class="grid-100 body-text-bold">
+		<br><br>
+		Tracking Income & Savings
+		<br><br>
+	</div>
+
+	<div class="grid-50 mobile-grid-100 body-text">
+		<div class="body-text">
+			Top expenses:
+			<br><br>
+		</div>
+
+		%(top_expenses)s
+
+		<br><br>
+	</div>
+
+	<div class="grid-50 mobile-grid-100 body-text">
+		<div class="body-text">
+			Account Information
+			<br><br>
+		</div>
+
+			%(account_info)s
+
+	</div>
+	<div class="grid-100 body-text">
+		<div class="grid-50">
+			Your Expenditures: $%(expenses)s
+			<br><br><br>
+		</div>
+
+		<div class="grid-50">
+			Your Income: $%(income)s
+			<br><br><br>
+		</div>
+		<br>
+		<div class="invisible body-text-bold"><br><br>You are %(99_1)s a member of the one percent</div>
+	</div>
+
+</body>
+
+
+
+</html>
